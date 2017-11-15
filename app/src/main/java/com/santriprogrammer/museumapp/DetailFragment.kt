@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detail.*
 
@@ -14,7 +13,7 @@ class DetailFragment : Fragment() {
     var v: View? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        v = inflater!!.inflate(R.layout.fragment_detail, container, false)
+        v = inflater?.inflate(R.layout.fragment_detail, container, false)
 
         return v
     }
@@ -24,7 +23,9 @@ class DetailFragment : Fragment() {
         var bundle: Bundle? = arguments
         var image = bundle?.getString("image")
         var title = bundle?.getString("title")
+        var overview = bundle?.getString("overview")
         txtDetailTitle?.text = title
+        txtDetailOverview?.text = overview
         Picasso.with(activity)
                 .load(Helper.IMAGE_URL_BACKDROP + image)
                 .placeholder(R.mipmap.ic_launcher)

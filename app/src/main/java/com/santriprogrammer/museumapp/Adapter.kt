@@ -29,7 +29,6 @@ class Adapter : Adapter<ViewHolder> {
     }
 
     override fun getItemCount(): Int {
-
         return list_data?.size!!
     }
 
@@ -46,6 +45,7 @@ class Adapter : Adapter<ViewHolder> {
             var bundle : Bundle? = Bundle()
             bundle?.putString("image", listitem.poster_path)
             bundle?.putString("title", listitem.title)
+            bundle?.putString("overview", listitem.overview)
             var detail: DetailFragment? = DetailFragment()
             var fragment: FragmentActivity = c as FragmentActivity
             detail?.arguments = bundle
@@ -59,11 +59,10 @@ class Adapter : Adapter<ViewHolder> {
         return ViewHolder(inflater)
     }
 
-
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        var image = itemView?.findViewById<ImageView>(R.id.imgItem)
-        var txtTitle = itemView?.findViewById<TextView>(R.id.txt_title)
-        var consItem = itemView?.findViewById<ConstraintLayout>(R.id.consItem)
+        var image = itemView?.findViewById<ImageView>(R.id.imgGrid)
+        var txtTitle = itemView?.findViewById<TextView>(R.id.txtGrid)
+        var consItem = itemView?.findViewById<ConstraintLayout>(R.id.consGrid)
         var ratingBar = itemView?.findViewById<RatingBar>(R.id.rb_votes)
         var vote_result = itemView?.findViewById<TextView>(R.id.votes_result)
     }
